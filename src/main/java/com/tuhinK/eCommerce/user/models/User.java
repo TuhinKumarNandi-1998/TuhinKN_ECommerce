@@ -5,18 +5,16 @@ import com.tuhinK.eCommerce.cartAndCheckout.models.Cart;
 import com.tuhinK.eCommerce.commons.models.BaseModel;
 import com.tuhinK.eCommerce.order.models.Order;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.Accessors;
 import org.hibernate.annotations.NaturalId;
 
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
+@Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -28,6 +26,7 @@ public class User extends BaseModel {
 
     @NaturalId
     private String email;
+    private String password;
 
     @JsonManagedReference
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)

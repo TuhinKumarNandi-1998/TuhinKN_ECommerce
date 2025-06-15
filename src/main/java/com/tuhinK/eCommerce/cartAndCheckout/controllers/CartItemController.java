@@ -9,6 +9,7 @@ import com.tuhinK.eCommerce.commons.exceptions.ResourceNotFoundException;
 import com.tuhinK.eCommerce.product.exceptions.ProductNotPresentException;
 import com.tuhinK.eCommerce.product.services.IProductService;
 import com.tuhinK.eCommerce.user.models.User;
+import com.tuhinK.eCommerce.user.services.IUserService;
 import io.jsonwebtoken.JwtException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -25,14 +26,14 @@ public class CartItemController {
     private final ICartItemService cartItemService;
     private final ICartService cartService;
     private final IProductService productService;
-//    private final IUserService userService;
+    private final IUserService userService;
 
     @PostMapping("/item/add")
     public ResponseEntity<ApiResponse> addItemToCart(
                                                      @RequestParam Long productId,
                                                      @RequestParam Integer quantity) {
         try {
-            // User user = userService.getAuthenticatedUser();
+            User user = userService.getAuthenticatedUser();
             Cart cart = cartService.initializeNewCart(new User());
             cartItemService.addCartItem(cart.getId(), productId, quantity);
             return ResponseEntity.ok().body(new ApiResponse("Item added to cart", null));
