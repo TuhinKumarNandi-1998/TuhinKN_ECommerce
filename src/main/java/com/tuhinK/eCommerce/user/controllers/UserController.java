@@ -8,7 +8,7 @@ import com.tuhinK.eCommerce.user.dtos.UpdateUserRequest;
 import com.tuhinK.eCommerce.user.dtos.UserDto;
 import com.tuhinK.eCommerce.user.dtos.UserPasswordResetDto;
 import com.tuhinK.eCommerce.user.models.User;
-import com.tuhinK.eCommerce.user.services.IUserService;
+import com.tuhinK.eCommerce.user.services.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +23,7 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 @RequestMapping("${api_prefix}/users")
 public class UserController {
 
-    private IUserService userService;
+    private UserService userService;
 
     @GetMapping("/{userId}/user")
     public ResponseEntity<ApiResponse> getUserById(@PathVariable("userId") Long userId) {

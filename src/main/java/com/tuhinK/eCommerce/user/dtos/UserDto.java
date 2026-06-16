@@ -1,6 +1,6 @@
 package com.tuhinK.eCommerce.user.dtos;
 
-import com.tuhinK.eCommerce.cartAndCheckout.dtos.CartRequestDto;
+import com.tuhinK.eCommerce.cartandcheckout.dtos.CartRequestDto;
 import com.tuhinK.eCommerce.order.dtos.OrderDto;
 import lombok.Data;
 import lombok.experimental.Accessors;

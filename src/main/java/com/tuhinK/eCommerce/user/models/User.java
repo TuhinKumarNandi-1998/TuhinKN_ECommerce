@@ -1,7 +1,7 @@
 package com.tuhinK.eCommerce.user.models;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.tuhinK.eCommerce.cartAndCheckout.models.Cart;
+import com.tuhinK.eCommerce.cartandcheckout.models.Cart;
 import com.tuhinK.eCommerce.commons.models.BaseModel;
 import com.tuhinK.eCommerce.order.models.Order;
 import jakarta.persistence.*;

@@ -2,8 +2,6 @@ package com.tuhinK.eCommerce.product.dtos;
 
 import com.tuhinK.eCommerce.product.models.Category;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import java.math.BigDecimal;

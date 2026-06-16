@@ -6,7 +6,7 @@ import com.tuhinK.eCommerce.commons.exceptions.ResourceNotFoundException;
 import com.tuhinK.eCommerce.product.dtos.CategoryRequestDto;
 import com.tuhinK.eCommerce.product.dtos.CategoryResponseDto;
 import com.tuhinK.eCommerce.product.models.Category;
-import com.tuhinK.eCommerce.product.services.ICategoryService;
+import com.tuhinK.eCommerce.product.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,10 +18,10 @@ import static org.springframework.http.HttpStatus.*;
 @RequestMapping("${api_prefix}/categories")
 public class CategoryController {
 
-    private final ICategoryService categoryService;
+    private final CategoryService categoryService;
 
     @Autowired
-    public CategoryController(ICategoryService categoryService) {
+    public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
 

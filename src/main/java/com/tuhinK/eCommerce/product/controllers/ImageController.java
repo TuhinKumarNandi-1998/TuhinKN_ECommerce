@@ -4,7 +4,7 @@ import com.tuhinK.eCommerce.commons.dtos.ApiResponse;
 import com.tuhinK.eCommerce.commons.exceptions.ResourceNotFoundException;
 import com.tuhinK.eCommerce.product.dtos.ImageDto;
 import com.tuhinK.eCommerce.product.models.Image;
-import com.tuhinK.eCommerce.product.services.IImageService;
+import com.tuhinK.eCommerce.product.services.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
@@ -26,10 +26,10 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 @RequestMapping("${api_prefix}/images")
 public class ImageController {
 
-    private final IImageService imageService;
+    private final ImageService imageService;
 
     @Autowired
-    public ImageController(IImageService imageService) {
+    public ImageController(ImageService imageService) {
         this.imageService = imageService;
     }
 

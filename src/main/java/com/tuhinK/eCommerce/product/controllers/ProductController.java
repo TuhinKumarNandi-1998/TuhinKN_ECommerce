@@ -6,9 +6,9 @@ import com.tuhinK.eCommerce.product.dtos.AddProductRequest;
 import com.tuhinK.eCommerce.product.dtos.ProductDto;
 import com.tuhinK.eCommerce.product.dtos.ProductUpdateRequest;
 import com.tuhinK.eCommerce.product.exceptions.AlreadyExistsException;
+import com.tuhinK.eCommerce.product.exceptions.ProductNotFoundException;
 import com.tuhinK.eCommerce.product.models.Product;
-import com.tuhinK.eCommerce.product.services.IProductService;
-import lombok.RequiredArgsConstructor;
+import com.tuhinK.eCommerce.product.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,10 +21,10 @@ import static org.springframework.http.HttpStatus.*;
 @RequestMapping("${api_prefix}/products")
 public class ProductController {
 
-    private final IProductService productService;
+    private final ProductService productService;
 
     @Autowired
-    public ProductController(IProductService productService) {
+    public ProductController(ProductService productService) {
         this.productService = productService;
     }
 
@@ -44,7 +44,7 @@ public class ProductController {
             Product product = productService.getProductById(productId);
             ProductDto productDto = productService.convertToDto(product);
             return  ResponseEntity.ok(new ApiResponse("success", productDto));
-        } catch (ResourceNotFoundException e) {
+        } catch (ProductNotFoundException e) {
             return ResponseEntity.status(NOT_FOUND).body(new ApiResponse(e.getMessage(), null));
         }
     }
@@ -67,7 +67,7 @@ public class ProductController {
             Product theProduct = productService.updateProduct(request, productId);
             ProductDto productDto = productService.convertToDto(theProduct);
             return ResponseEntity.ok(new ApiResponse("Update product success!", productDto));
-        } catch (ResourceNotFoundException e) {
+        } catch (ProductNotFoundException e) {
             return ResponseEntity.status(NOT_FOUND).body(new ApiResponse(e.getMessage(), null));
         }
     }
