@@ -7,6 +7,7 @@ import com.tuhinK.eCommerce.product.dtos.CategoryRequestDto;
 import com.tuhinK.eCommerce.product.dtos.CategoryResponseDto;
 import com.tuhinK.eCommerce.product.models.Category;
 import com.tuhinK.eCommerce.product.services.CategoryService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,15 +16,12 @@ import java.util.List;
 
 import static org.springframework.http.HttpStatus.*;
 
+@RequiredArgsConstructor
+@RestController
 @RequestMapping("${api_prefix}/categories")
 public class CategoryController {
 
     private final CategoryService categoryService;
-
-    @Autowired
-    public CategoryController(CategoryService categoryService) {
-        this.categoryService = categoryService;
-    }
 
     @GetMapping("/all")
     public ResponseEntity<ApiResponse> getAllCategories() {
@@ -58,7 +56,7 @@ public class CategoryController {
         }
     }
 
-    @GetMapping("/category/{name}")
+    @GetMapping("/category/name/{name}")
     public ResponseEntity<ApiResponse> getCategoryByName(@PathVariable("name") String name) {
 
         try {

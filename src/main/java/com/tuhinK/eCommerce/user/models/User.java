@@ -13,11 +13,13 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 
-@Data
+@Setter
+@Getter
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "users")
 public class User extends BaseModel {
 
     private String firstName;

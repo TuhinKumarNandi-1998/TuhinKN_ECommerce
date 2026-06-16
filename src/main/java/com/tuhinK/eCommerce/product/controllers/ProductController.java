@@ -9,6 +9,7 @@ import com.tuhinK.eCommerce.product.exceptions.AlreadyExistsException;
 import com.tuhinK.eCommerce.product.exceptions.ProductNotFoundException;
 import com.tuhinK.eCommerce.product.models.Product;
 import com.tuhinK.eCommerce.product.services.ProductService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,16 +18,12 @@ import java.util.List;
 
 import static org.springframework.http.HttpStatus.*;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("${api_prefix}/products")
 public class ProductController {
 
     private final ProductService productService;
-
-    @Autowired
-    public ProductController(ProductService productService) {
-        this.productService = productService;
-    }
 
     @GetMapping("/all")
     public ResponseEntity<ApiResponse> getAllProducts() {

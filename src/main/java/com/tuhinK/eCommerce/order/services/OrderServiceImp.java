@@ -83,8 +83,7 @@ public class OrderServiceImp implements OrderService {
     }
 
     private List<OrderItem> createOrderItems(Cart cart, Order order) {
-        return cart.getCartItems()
-                .stream()
+        return cart.getCartItems().stream()
                 .map(cartItem -> {
                     Product product = cartItem.getProduct();
 
@@ -96,7 +95,7 @@ public class OrderServiceImp implements OrderService {
                     OrderItem orderItem = new OrderItem();
                     orderItem.setProduct(product);
                     orderItem.setPrice(cartItem.getUnitPrice());
-                    orderItem.setQuantity(orderItem.getQuantity());
+                    orderItem.setQuantity(cartItem.getQuantity());
 
                     return orderItem;
                 })
@@ -104,8 +103,7 @@ public class OrderServiceImp implements OrderService {
     }
 
     private BigDecimal calculateTotalAmount(List<OrderItem> orderItems) {
-        return orderItems
-                .stream()
+        return orderItems.stream()
                 .map(orderItem -> orderItem.getPrice().multiply(BigDecimal.valueOf(orderItem.getQuantity())))
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }

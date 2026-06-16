@@ -5,6 +5,7 @@ import com.tuhinK.eCommerce.commons.exceptions.ResourceNotFoundException;
 import com.tuhinK.eCommerce.product.dtos.ImageDto;
 import com.tuhinK.eCommerce.product.models.Image;
 import com.tuhinK.eCommerce.product.services.ImageService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
@@ -22,16 +23,12 @@ import java.util.List;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("${api_prefix}/images")
 public class ImageController {
 
     private final ImageService imageService;
-
-    @Autowired
-    public ImageController(ImageService imageService) {
-        this.imageService = imageService;
-    }
 
     @PostMapping("/upload")
     public ResponseEntity<ApiResponse> saveImages(
