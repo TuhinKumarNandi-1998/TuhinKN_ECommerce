@@ -80,6 +80,7 @@ class OrderServiceImpTest {
         order.setUser(user);
         order.setOrderStatus(OrderStatus.PENDING);
         order.setOrderDate(LocalDate.now());
+        order.setTotalAmount(new BigDecimal("1999.98"));
     }
 
     @Nested
