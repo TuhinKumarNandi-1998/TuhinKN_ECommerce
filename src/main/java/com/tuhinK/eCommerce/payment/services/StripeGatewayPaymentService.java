@@ -107,7 +107,7 @@ public class StripeGatewayPaymentService implements PaymentService {
     }
 
     /**
-     * Translates standard standard decimal inputs safely into minor fractional currency integers.
+     * Translates standard decimal inputs safely into minor fractional currency integers.
      */
     private long convertToMinorUnits(BigDecimal amount, String currency) {
         // Zero-decimal currencies check list adjustment can be appended here if multi-currency global scale is needed

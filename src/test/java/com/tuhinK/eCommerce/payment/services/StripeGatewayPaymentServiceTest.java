@@ -1,7 +1,6 @@
 package com.tuhinK.eCommerce.payment.services;
 
 import com.stripe.exception.ApiConnectionException;
-import com.stripe.exception.StripeException;
 import com.stripe.model.checkout.Session;
 import com.stripe.net.RequestOptions;
 import com.stripe.param.checkout.SessionCreateParams;
@@ -70,7 +69,7 @@ class StripeGatewayPaymentServiceTest {
 
     @Test
     @DisplayName("should create gateway session and save payment details")
-    void createGatewaySession_success() throws StripeException, PaymentGatewayException {
+    void createGatewaySession_success() throws PaymentGatewayException {
         Session mockStripeSession = mock(Session.class);
         when(mockStripeSession.getId()).thenReturn("cs_test_123");
         when(mockStripeSession.getUrl()).thenReturn("http://checkout.stripe.com/pay/cs_test_123");
