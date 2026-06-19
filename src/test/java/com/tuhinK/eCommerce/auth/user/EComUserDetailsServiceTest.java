@@ -39,7 +39,7 @@ class EComUserDetailsServiceTest {
                 .setFirstName("John")
                 .setEmail("john@test.com")
                 .setPassword("password123")
-                .setRoles(List.of(role));
+                .setAllRoles(List.of(role));
         user.setId(1L);
     }
 

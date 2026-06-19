@@ -50,7 +50,7 @@ public class UserServiceImp implements UserService {
                             .setFirstName(request.getFirstName())
                             .setLastName(request.getLastName())
                             .setMiddleName(request.getMiddleName())
-                            .setRoles(request.getUserRole());
+                            .setAllRoles(request.getUserRole());
                     return userRepository.save(user);
                 })
                 .orElseThrow(() -> new AlreadyExistException("Oops! " + request.getEmail() + " already exists"));
@@ -79,7 +79,7 @@ public class UserServiceImp implements UserService {
 
     @Override
     public UserDto convertUserToDto(User user) {
-        Hibernate.initialize(user.getRoles());
+        Hibernate.initialize(user.getAllRoles());
         Hibernate.initialize(user.getOrders());
         return modelMapper.map(user, UserDto.class);
     }

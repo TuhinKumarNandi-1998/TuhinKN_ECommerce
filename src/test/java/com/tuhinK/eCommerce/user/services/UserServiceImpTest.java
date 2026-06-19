@@ -58,7 +58,7 @@ class UserServiceImpTest {
                 .setLastName("Doe")
                 .setEmail("john@test.com")
                 .setPassword("encodedPassword")
-                .setRoles(List.of(role));
+                .setAllRoles(List.of(role));
         user.setId(1L);
     }
 
@@ -256,7 +256,7 @@ class UserServiceImpTest {
         @DisplayName("should convert User to UserDto")
         void convertUserToDto_success() {
             user.setOrders(List.of());
-            user.setRoles(List.of(role));
+            user.setAllRoles(List.of(role));
 
             UserDto dto = userService.convertUserToDto(user);
 
@@ -271,7 +271,7 @@ class UserServiceImpTest {
         @DisplayName("should handle user with null orders")
         void convertUserToDto_nullOrders() {
             user.setOrders(null);
-            user.setRoles(List.of(role));
+            user.setAllRoles(List.of(role));
 
             UserDto dto = userService.convertUserToDto(user);
 

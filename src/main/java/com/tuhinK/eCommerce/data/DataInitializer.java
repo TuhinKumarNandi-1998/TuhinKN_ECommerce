@@ -91,7 +91,7 @@ public class DataInitializer implements ApplicationListener<ApplicationReadyEven
         user.setLastName(lastName);
         user.setEmail(email);
         user.setPassword(passwordEncoder.encode(DEFAULT_PASSWORD));
-        user.setRoles(Set.of(role));
+        user.setAllRoles(Set.of(role));
 
         userRepository.save(user);
 

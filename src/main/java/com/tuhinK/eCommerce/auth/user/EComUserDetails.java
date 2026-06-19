@@ -25,7 +25,7 @@ public class EComUserDetails implements UserDetails {
     private Collection<GrantedAuthority> authorities;
 
     public static EComUserDetails buildUserDetails(User user) {
-        List<GrantedAuthority> grantedAuthorities = user.getRoles()
+        List<GrantedAuthority> grantedAuthorities = user.getAllRoles()
                 .stream()
                 .map(role -> new SimpleGrantedAuthority(role.getName()))
                 .collect(Collectors.toList());
