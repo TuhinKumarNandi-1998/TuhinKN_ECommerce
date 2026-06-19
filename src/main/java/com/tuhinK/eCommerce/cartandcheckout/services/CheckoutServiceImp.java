@@ -26,7 +26,7 @@ public class CheckoutServiceImp implements  CheckoutService {
     private final PaymentService paymentService;
     private final OrderRepository orderRepository;
 
-    @Value("${baseURL}")
+    @Value("${base-url}")
     private String baseURL;
 
     @Override
