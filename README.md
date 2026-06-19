@@ -251,6 +251,6 @@ mvn test
 
 **Tuhin Kumar Nandi**
 
-Java Backend Developer | Spring Boot | PostgreSQL | Distributed Systems Enthusiast
+Software Engineer (Backend) | Java | Spring | SQL
 
 ---
