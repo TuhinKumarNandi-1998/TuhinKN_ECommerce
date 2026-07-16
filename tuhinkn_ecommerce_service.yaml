@@ -1,0 +1,58 @@
+# ===========================================================
+# TuhinKN E-Commerce - Kubernetes Service Manifest
+# ===========================================================
+# Includes:
+#   1. PostgreSQL ClusterIP Service (internal DB access)
+#   2. Spring Boot App NodePort Service (external access via minikube)
+# ===========================================================
+
+# -----------------------------------------------------------
+# 1. PostgreSQL Service (ClusterIP — internal only)
+#    The Spring Boot app connects to postgres using:
+#    jdbc:postgresql://postgres-service:5432/ecommerce_db
+# -----------------------------------------------------------
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-service
+  namespace: tuhinkn-ecommerce
+  labels:
+    app: postgres
+    component: database
+spec:
+  type: ClusterIP
+  selector:
+    app: postgres
+  ports:
+    - name: postgres
+      protocol: TCP
+      port: 5432
+      targetPort: 5432
+
+---
+
+# -----------------------------------------------------------
+# 2. Spring Boot Application Service (NodePort)
+#    Access via:  minikube service tuhinkn-ecommerce-service -n tuhinkn-ecommerce
+#
+#    NodePort 30080 -> Container port 8080
+#    (nodePort range: 30000–32767)
+# -----------------------------------------------------------
+apiVersion: v1
+kind: Service
+metadata:
+  name: tuhinkn-ecommerce-service
+  namespace: tuhinkn-ecommerce
+  labels:
+    app: tuhinkn-ecommerce
+    component: backend
+spec:
+  type: LoadBalancer
+  selector:
+    app: tuhinkn-ecommerce
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8080          # Service port (inside cluster)
+      targetPort: 8080    # Container port
+      nodePort: 30080     # External node port (accessible via minikube IP)
